@@ -1,5 +1,6 @@
-package com.rafaelcostavilla.CadastroDeNinjasUsandoSpring;
+package com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Model;
 
+import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Missoes.Model.MissaoEntity;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +16,17 @@ public class NinjaEntity {
     //TODO: String cla;
     //TODO: RANK rank;
     //TODO: List<String> tecnicas;
+    @ManyToOne
+    @JoinColumn(name = "missao_id")
+    private MissaoEntity missao;
+
+    public MissaoEntity getMissao() {
+        return missao;
+    }
+
+    public void setMissao(MissaoEntity missao) {
+        this.missao = missao;
+    }
 
 
     public NinjaEntity() {
