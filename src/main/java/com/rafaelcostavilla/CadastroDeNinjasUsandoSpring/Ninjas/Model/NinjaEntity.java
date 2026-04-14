@@ -15,14 +15,18 @@ public class NinjaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
     private String nome;
+
+    @Column(unique = true)
     private String email;
+
     private int idade;
     //TODO: String cla;
     //TODO: RANK rank;
     //TODO: List<String> tecnicas;
+
     @ManyToOne
     @JoinColumn(name = "missao_id")
     private MissaoEntity missao;
