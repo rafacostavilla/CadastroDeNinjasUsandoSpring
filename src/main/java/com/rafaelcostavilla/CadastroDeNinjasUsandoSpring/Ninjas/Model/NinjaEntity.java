@@ -22,6 +22,9 @@ public class NinjaEntity {
     @Column(unique = true)
     private String email;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
     private int idade;
     //TODO: String cla;
     //TODO: RANK rank;
