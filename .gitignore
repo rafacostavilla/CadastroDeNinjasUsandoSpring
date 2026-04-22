@@ -35,3 +35,4 @@ build/
 
 ### User ###
 .env
+data
