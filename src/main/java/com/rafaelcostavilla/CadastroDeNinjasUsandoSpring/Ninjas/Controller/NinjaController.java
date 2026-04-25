@@ -12,4 +12,34 @@ public class NinjaController {
     public String boasVindas() {
         return "Bem vindo ao Spring Boot! Essa é a primeira rota criada.";
     }
+
+    // Create Ninja
+    @GetMapping("/criarNinja")
+    public String createNinja() {
+        return "Ninja criado com sucesso!";
+    }
+
+    // Update Ninja by ID
+    @GetMapping("/atualizarNinjaPorID")
+    public String updateNinjaByID() {
+        return "Ninja atualizado com sucesso!";
+    }
+
+    // READ all Ninjas
+    @GetMapping("/todos")
+    public String showAllNinjas() {
+        return "Mostrar todos os ninjas";
+    }
+
+    // READ Ninja by ID
+    @GetMapping("/mostrarNinjaPorID")
+    public String showNinjaByID() {
+        return "Mostrar ninja por ID";
+    }
+
+    // Delete Ninja By ID
+    @GetMapping("/deletarNinjaPorID")
+    public String deleteNinjaByID() {
+        return "Deletar ninja por ID";
+    }
 }
