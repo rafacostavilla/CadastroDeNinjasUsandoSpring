@@ -2,10 +2,7 @@ package com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Controller;
 
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Model.NinjaEntity;
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Service.NinjaService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,9 +22,10 @@ public class NinjaController {
     }
 
     // Create Ninja
-    @GetMapping("/criarNinja")
-    public String createNinja() {
-        return "Ninja criado com sucesso!";
+    @PostMapping("/criar")
+    public NinjaEntity createNinja(@RequestBody NinjaEntity ninjaEntity)
+    {
+        return ninjaService.createNinja(ninjaEntity);
     }
 
     // Update Ninja by ID
@@ -49,8 +47,8 @@ public class NinjaController {
     }
 
     // Delete Ninja By ID
-    @GetMapping("/deletarNinjaPorID")
-    public String deleteNinjaByID() {
-        return "Deletar ninja por ID";
+    @DeleteMapping("/deletar/{id}")
+    public void deleteNinjaByID(@PathVariable Long id) {
+        ninjaService.deleteNinjaById(id);
     }
 }

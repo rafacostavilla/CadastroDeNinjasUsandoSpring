@@ -22,4 +22,15 @@ public class NinjaService {
     public Optional<NinjaEntity> findById(Long id) {
         return ninjaRepository.findById(id);
     }
+
+    public void deleteNinjaById(Long id) {
+        ninjaRepository.deleteById(id);
+//        ninjaRepository.
+//                findById(id).
+//                ifPresent(ninjaEntity -> ninjaRepository.delete(ninjaEntity));
+    }
+
+    public NinjaEntity createNinja(NinjaEntity ninjaEntity) {
+        return ninjaRepository.save(ninjaEntity);
+    }
 }
