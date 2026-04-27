@@ -1,5 +1,6 @@
 package com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Missoes.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Model.NinjaEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,5 +22,6 @@ public class MissaoEntity {
     private String dificuldade;
 
     @OneToMany(mappedBy = "missao")
+    @JsonIgnore
     private List<NinjaEntity> ninjas;
 }
