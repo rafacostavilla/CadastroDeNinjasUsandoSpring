@@ -33,4 +33,8 @@ public class NinjaService {
     public NinjaEntity createNinja(NinjaEntity ninjaEntity) {
         return ninjaRepository.save(ninjaEntity);
     }
+
+    public NinjaEntity updateNinjaById(Long id, NinjaEntity ninjaEntity) {
+        return ninjaRepository.existsById(id)? ninjaRepository.save(ninjaEntity):null;
+    }
 }

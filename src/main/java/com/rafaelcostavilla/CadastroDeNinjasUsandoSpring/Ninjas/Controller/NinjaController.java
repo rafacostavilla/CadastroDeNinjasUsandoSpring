@@ -29,9 +29,10 @@ public class NinjaController {
     }
 
     // Update Ninja by ID
-    @GetMapping("/atualizarNinjaPorID")
-    public String updateNinjaByID() {
-        return "Ninja atualizado com sucesso!";
+    @PutMapping("/atualizar/{id}")
+    public NinjaEntity updateNinjaByID(@PathVariable Long id, @RequestBody NinjaEntity updatedNinja)
+    {
+        return ninjaService.updateNinjaById(id, updatedNinja);
     }
 
     // READ all Ninjas
