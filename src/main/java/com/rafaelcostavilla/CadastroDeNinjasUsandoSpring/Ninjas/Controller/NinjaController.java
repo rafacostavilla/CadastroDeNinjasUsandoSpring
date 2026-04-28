@@ -1,6 +1,7 @@
 package com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Controller;
 
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Model.NinjaEntity;
+import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.NinjaDTO;
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Service.NinjaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +24,9 @@ public class NinjaController {
 
     // Create Ninja
     @PostMapping("/criar")
-    public NinjaEntity createNinja(@RequestBody NinjaEntity ninjaEntity)
+    public NinjaDTO createNinja(@RequestBody NinjaDTO ninjaDTO)
     {
-        return ninjaService.createNinja(ninjaEntity);
+        return ninjaService.createNinja(ninjaDTO);
     }
 
     // Update Ninja by ID

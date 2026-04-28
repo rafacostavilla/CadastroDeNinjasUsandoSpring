@@ -2,6 +2,8 @@ package com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Service;
 
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Model.NinjaEntity;
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Model.NinjaRepository;
+import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.NinjaDTO;
+import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.NinjaMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,10 +11,13 @@ import java.util.Optional;
 
 @Service
 public class NinjaService {
-    private NinjaRepository ninjaRepository;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
+
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     public List<NinjaEntity> findAll() {
@@ -30,8 +35,10 @@ public class NinjaService {
 //                ifPresent(ninjaEntity -> ninjaRepository.delete(ninjaEntity));
     }
 
-    public NinjaEntity createNinja(NinjaEntity ninjaEntity) {
-        return ninjaRepository.save(ninjaEntity);
+    public NinjaDTO createNinja(NinjaDTO ninjaDTO)
+    {
+        NinjaEntity ninjaEntity  = ninjaMapper.map(ninjaDTO);
+        return ninjaMapper.map(ninjaRepository.save(ninjaEntity));
     }
 
     public NinjaEntity updateNinjaById(Long id, NinjaEntity ninjaEntity) {
