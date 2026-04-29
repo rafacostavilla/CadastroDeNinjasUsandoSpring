@@ -34,4 +34,6 @@ public class NinjaEntity {
     @JoinColumn(name = "missao_id")
     private MissaoEntity missao;
 
+    private String ranking;
+
 }

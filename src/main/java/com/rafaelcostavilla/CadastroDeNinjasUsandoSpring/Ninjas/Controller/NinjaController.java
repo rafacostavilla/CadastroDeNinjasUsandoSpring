@@ -1,6 +1,7 @@
 package com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Controller;
 
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Model.NinjaEntity;
+import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.NinjaDTO;
 import com.rafaelcostavilla.CadastroDeNinjasUsandoSpring.Ninjas.Service.NinjaService;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,26 +24,27 @@ public class NinjaController {
 
     // Create Ninja
     @PostMapping("/criar")
-    public NinjaEntity createNinja(@RequestBody NinjaEntity ninjaEntity)
+    public NinjaDTO createNinja(@RequestBody NinjaDTO ninjaDTO)
     {
-        return ninjaService.createNinja(ninjaEntity);
+        return ninjaService.createNinja(ninjaDTO);
     }
 
     // Update Ninja by ID
-    @GetMapping("/atualizarNinjaPorID")
-    public String updateNinjaByID() {
-        return "Ninja atualizado com sucesso!";
+    @PutMapping("/atualizar/{id}")
+    public NinjaDTO updateNinjaByID(@PathVariable Long id, @RequestBody NinjaDTO updatedNinja)
+    {
+        return ninjaService.updateNinjaById(id, updatedNinja);
     }
 
     // READ all Ninjas
     @GetMapping("/todos")
-    public List<NinjaEntity> showAllNinjas() {
+    public List<NinjaDTO> showAllNinjas() {
         return ninjaService.findAll();
     }
 
     // READ Ninja by ID
     @GetMapping("/{id}")
-    public NinjaEntity showNinjaByID(@PathVariable Long id) {
+    public NinjaDTO showNinjaByID(@PathVariable Long id) {
         return ninjaService.findById(id).orElse(null);
     }
 
