@@ -51,8 +51,10 @@ public class NinjaService {
     }
 
     public NinjaDTO updateNinjaById(Long id, NinjaDTO ninjaDTO) {
+        NinjaEntity ninjaEntity = ninjaMapper.map(ninjaDTO);
+        ninjaEntity.setId(id);
         return ninjaRepository.existsById(id)?
-                ninjaMapper.map(ninjaRepository.save(ninjaMapper.map(ninjaDTO))):
+                ninjaMapper.map(ninjaRepository.save(ninjaEntity)):
                 null;
     }
 }
