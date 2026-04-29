@@ -31,20 +31,20 @@ public class NinjaController {
 
     // Update Ninja by ID
     @PutMapping("/atualizar/{id}")
-    public NinjaEntity updateNinjaByID(@PathVariable Long id, @RequestBody NinjaEntity updatedNinja)
+    public NinjaDTO updateNinjaByID(@PathVariable Long id, @RequestBody NinjaDTO updatedNinja)
     {
         return ninjaService.updateNinjaById(id, updatedNinja);
     }
 
     // READ all Ninjas
     @GetMapping("/todos")
-    public List<NinjaEntity> showAllNinjas() {
+    public List<NinjaDTO> showAllNinjas() {
         return ninjaService.findAll();
     }
 
     // READ Ninja by ID
     @GetMapping("/{id}")
-    public NinjaEntity showNinjaByID(@PathVariable Long id) {
+    public NinjaDTO showNinjaByID(@PathVariable Long id) {
         return ninjaService.findById(id).orElse(null);
     }
 
